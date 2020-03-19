@@ -37,7 +37,6 @@ func _ready():
 
 func _physics_process(delta):
 	_get_input() # moving horizontally
-	_assign_animation() # play animations
 	if velocity.y >= 0:
 		is_jumping = false
 	else:
@@ -97,18 +96,7 @@ func _check_is_grounded(raycasts = self.raycasts):
 	# if loop completes then raycast was not detected
 	return false
 	
-	
-	# play animations
-func _assign_animation():
-	var anim = "Idle"
-	if is_jumping:
-		anim = "Jump"
-	elif is_falling:
-		anim = "Fall"
-	elif Input.is_action_pressed("move_left") || Input.is_action_pressed("move_right"):
-		anim = "Run"
-	if anim_player.assigned_animation != anim:
-		anim_player.play(anim)
+
 
 func _on_Area2D_body_exited(body):
 	set_collision_mask_bit(DROP_THRU_BIT, true)
