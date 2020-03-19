@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Player/Idle/Idle0.png" type="Texture" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://Sprites/Player/Run/Run7.png" type="Texture" id=25]
 [ext_resource path="res://Scenes/Player/Camera2D.gd" type="Script" id=26]
 [ext_resource path="res://Scenes/Player/Button.gd" type="Script" id=27]
+[ext_resource path="res://Scenes/Player/PlayerFSM.gd" type="Script" id=28]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Fall"
@@ -191,6 +192,9 @@ margin_right = 230.0
 margin_bottom = -108.0
 text = "oyunu kapat butonuyum"
 script = ExtResource( 27 )
+
+[node name="PlayerFSM" type="Node2D" parent="."]
+script = ExtResource( 28 )
 [connection signal="grounded_updated" from="." to="Camera2D" method="_on_Player_grounded_updated"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
 [connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
