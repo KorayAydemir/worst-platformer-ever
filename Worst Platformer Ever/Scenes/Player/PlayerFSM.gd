@@ -14,7 +14,7 @@ func _input(event):
 		# if jump is just pressed and char is grounded then jump
 		if event.is_action_pressed("jump"):
 			parent.velocity.y = parent.max_jump_velocity
-		
+			SceneChanger.change_scene("res://Scenes/Levels/Level_1.tscn")
 		# drop through platform
 		if Input.is_action_pressed("down"):
 			if parent._check_is_grounded(parent.drop_thru_raycasts): #parent.drop_thru_raycasts on video
