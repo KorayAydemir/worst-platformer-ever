@@ -89,3 +89,8 @@ func _check_is_grounded(raycasts = self.raycasts):
 
 func _on_Area2D_body_exited(body):
 	set_collision_mask_bit(DROP_THRU_BIT, true)
+
+
+
+func _on_SceneChangeArea_body_entered(body):
+	SceneChanger.change_scene("res://Scenes/Levels/Level_1.tscn")
