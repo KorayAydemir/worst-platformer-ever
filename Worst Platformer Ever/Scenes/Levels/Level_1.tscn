@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Tilemaps/DropThruTilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Tilemaps/JungleDirtTilemap.tres" type="TileSet" id=2]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://icon.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 29.3519, 29.0057 )
@@ -29,11 +28,10 @@ tile_data = PoolIntArray( -720811, 7, 0, -720810, 7, 0, -720809, 7, 0, -720807, 
 position = Vector2( 256, 128 )
 
 [node name="SceneChangeArea" type="Area2D" parent="."]
-position = Vector2( 620.648, 159.006 )
-
-[node name="icon" type="Sprite" parent="SceneChangeArea"]
-position = Vector2( -1.13586, -0.368973 )
-texture = ExtResource( 4 )
+position = Vector2( 1239.22, 143.191 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SceneChangeArea"]
 shape = SubResource( 1 )

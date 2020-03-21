@@ -24,6 +24,7 @@ var max_jump_height = 3.75 * Globals.UNIT_SIZE #3.5 yapıcaksın
 var min_jump_height = 0.76 * Globals.UNIT_SIZE
 var jump_duration = 0.4
 var fall_duration = 0.35
+var air_control = 1
 
 onready var drop_thru_raycasts = $DropThruRaycasts
 onready var raycasts = $Raycasts
@@ -74,7 +75,7 @@ func _handle_move_input(): # hold inputs
 		
 	# smoothness
 func _get_h_weight():
-	return 0.2 if is_grounded else 0.1
+	return 0.2 if is_grounded else air_control
 	
 	
 # check if raycasts are colliding with ground (is character on ground)
