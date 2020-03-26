@@ -188,10 +188,10 @@ script = ExtResource( 26 )
 
 [node name="Button" type="Button" parent="."]
 margin_left = 64.0
-margin_top = -128.0
+margin_top = -128.599
 margin_right = 230.0
-margin_bottom = -108.0
-text = "oyunu kapat butonuyum"
+margin_bottom = -108.599
+text = "exit"
 script = ExtResource( 27 )
 
 [node name="PlayerFSM" type="Node2D" parent="."]
