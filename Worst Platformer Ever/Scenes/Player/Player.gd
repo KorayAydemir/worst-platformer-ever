@@ -29,6 +29,7 @@ var air_control = 1
 onready var drop_thru_raycasts = $DropThruRaycasts
 onready var raycasts = $Raycasts
 onready var anim_player = $Body/Sprite/AnimationPlayer
+onready var coyote_timer = $CoyoteTimer
 
 func _ready():
 	# kinematic equations for determining gravity and jump velocity automatically
@@ -42,7 +43,6 @@ func _apply_gravity(delta):
 		velocity.y += gravity * delta 
 	else: # fall gravity
 		velocity.y += fall_gravity * delta
-		
 func _apply_movement():
 	if velocity.y >= 0:
 		is_jumping = false    
@@ -52,7 +52,9 @@ func _apply_movement():
 		is_falling = true
 	else:
 		is_falling = false
-		
+	
+	# coyote jump
+	var was_on_floor = is_on_floor()
 		
 	velocity = move_and_slide(velocity, UP)
 	is_grounded = !is_jumping  && get_collision_mask_bit(DROP_THRU_BIT) && _check_is_grounded()
@@ -62,6 +64,8 @@ func _apply_movement():
 	is_grounded = is_on_floor()
 	if was_grounded == null || is_grounded != was_grounded:
 		emit_signal("grounded_updated", is_grounded)
+		
+	
 	
 func _handle_move_input(): # hold inputs
 	 # horizontal movement direction
