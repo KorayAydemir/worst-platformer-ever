@@ -32,7 +32,7 @@ func _state_logic(delta):
 	parent._apply_movement()
 	
 func _get_transition(delta):
-	print(state)
+#	print(state)
 	match state:
 		states.idle: # in idle satate
 			if !parent.is_on_floor(): # if not on the ground

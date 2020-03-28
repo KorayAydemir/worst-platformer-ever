@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Monsters/Boss1.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Monsters/Eye/flesh-eye-export.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Monsters/Boss1FSM.gd" type="Script" id=3]
+[ext_resource path="res://Sprites/Monsters/Eye/eyeball.png" type="Texture" id=4]
+
+[node name="Boss1" type="KinematicBody2D"]
+scale = Vector2( 10, 10 )
+script = ExtResource( 1 )
+
+[node name="Body" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Body"]
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 14.186, -62.8791, 16.7498, -50.0601, 61.5554, -53.9668, 12.2326, -41.5141, 12.721, -25.765, 40, -10, 20, 10, 20, 20, 60, 30, 20, 40, 20, 60, 19.924, 64.0903, -72.466, 64.2816, -63.7926, -63.302 )
+
+[node name="Boss1FSM" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="eyeball" type="Sprite" parent="."]
+position = Vector2( 21.7043, -7.81846 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )

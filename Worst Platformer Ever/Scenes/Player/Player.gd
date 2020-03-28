@@ -37,7 +37,7 @@ func _ready():
 	fall_gravity = 2 * max_jump_height / pow(fall_duration, 2)
 	max_jump_velocity = -sqrt(2 * gravity * max_jump_height)
 	min_jump_velocity = -sqrt (2 * gravity * min_jump_height)
-
+	print(get_position())
 func _apply_gravity(delta):
 	if is_jumping:
 		velocity.y += gravity * delta 
