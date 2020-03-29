@@ -7,7 +7,6 @@ func _ready():
 	add_state("ledge_fall")
 	call_deferred("set_state", states.idle)
 
-
 func _input(event):
 	# check if our current state is idle or run
 	if [states.idle, states.run].has(state) || !parent.coyote_timer.is_stopped():

@@ -15,7 +15,7 @@ func _process(delta):
 	_change_look_ahead_factor()
 func _change_look_ahead_factor():
 	if get_owner().move_direction == 1:
-		LOOK_AHEAD_FACTOR = 0.3
+		LOOK_AHEAD_FACTOR = 0.2
 	elif get_owner().move_direction == -1:
 		LOOK_AHEAD_FACTOR = -0.05
 		

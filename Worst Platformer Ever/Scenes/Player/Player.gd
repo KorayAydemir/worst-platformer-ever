@@ -37,7 +37,6 @@ func _ready():
 	fall_gravity = 2 * max_jump_height / pow(fall_duration, 2)
 	max_jump_velocity = -sqrt(2 * gravity * max_jump_height)
 	min_jump_velocity = -sqrt (2 * gravity * min_jump_height)
-	print(get_position())
 func _apply_gravity(delta):
 	if is_jumping:
 		velocity.y += gravity * delta 
@@ -56,7 +55,8 @@ func _apply_movement():
 	# coyote jump
 	var was_on_floor = is_on_floor()
 		
-	velocity = move_and_slide(velocity, UP)
+	velocity = move_and_slide(velocity, UP) # horizontal movement
+	
 	is_grounded = !is_jumping  && get_collision_mask_bit(DROP_THRU_BIT) && _check_is_grounded()
 	
 	#camera stuff
