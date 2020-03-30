@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Tilemaps/DropThruTilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Tilemaps/JungleDirtTilemap.tres" type="TileSet" id=2]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
-[ext_resource path="res://Scenes/Monsters/Boss1.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 29.3519, 29.0057 )
@@ -41,7 +40,4 @@ shape = SubResource( 1 )
 [node name="icon" type="Sprite" parent="SceneChangeArea"]
 position = Vector2( 0.916504, 1.20006 )
 texture = ExtResource( 4 )
-
-[node name="Boss1" parent="." instance=ExtResource( 5 )]
-position = Vector2( -194.32, -298.467 )
 [connection signal="body_entered" from="SceneChangeArea" to="Player" method="_on_SceneChangeArea_body_entered"]
