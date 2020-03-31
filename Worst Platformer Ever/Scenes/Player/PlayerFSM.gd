@@ -5,6 +5,7 @@ func _ready():
 	add_state("jump")
 	add_state("fall")
 	add_state("ledge_fall")
+	add_state("wall_slide")
 	call_deferred("set_state", states.idle)
 
 func _input(event):
@@ -17,8 +18,12 @@ func _input(event):
 		# drop through platform
 		if Input.is_action_pressed("down"):
 			if parent._check_is_grounded(parent.drop_thru_raycasts): #parent.drop_thru_raycasts on video
-				parent.set_collision_mask_bit(parent.DROP_THRU_BIT, false)
-				
+				parent.set_collision_mask_bit(parent.DROP_THRU_BIT, false) # stop colliding with drop_thru layer
+	
+	elif state ==  states.wall_slide:
+		if event.is_action_pressed("jump"):
+			parent.wall_jump()
+			set_state(states.jump)
 	# check if our current state is jump
 	if state == states.jump:
 		# if jump key is released, fall
@@ -26,8 +31,13 @@ func _input(event):
 			parent.velocity.y = parent.min_jump_velocity
 			
 func _state_logic(delta):
-	parent._handle_move_input()
+	parent._update_move_direction()
+	parent._update_wall_direction()
+	if state != states.wall_slide:
+		parent._handle_move_input()
 	parent._apply_gravity(delta)
+	if state == states.wall_slide:
+		parent._cap_gravity_wall_slide()
 	parent._apply_movement()
 	
 func _get_transition(delta):
@@ -52,21 +62,33 @@ func _get_transition(delta):
 				return states.idle # switch to idle state
 				
 		states.jump:
-			if  parent.is_on_floor(): # if on the ground
+			if parent.wall_direction != 0 && parent.wall_slide_cooldown.is_stopped():
+				return states.wall_slide
+			elif  parent.is_on_floor(): # if on the ground
 				return states.idle	# switch to idle state
 			elif parent.is_falling: # if moving downwards
 				return states.fall # switch to fall state
 				
 		states.fall:
+			if parent.wall_direction != 0 && parent.wall_slide_cooldown.is_stopped():
+				return states.wall_slide
 			if  parent.is_on_floor(): # if on the ground
 				return states.idle	# switch to idle state
 			elif parent.is_jumping: # if moving upwards
 				return states.jump
 		states.ledge_fall:
+			if parent.wall_direction != 0 && parent.wall_slide_cooldown.is_stopped():
+				return states.wall_slide
 			if  parent.is_on_floor(): # if on the ground
 				return states.idle	# switch to idle state
 			elif parent.is_jumping: # if moving upwards
 				return states.jump
+		states.wall_slide:
+			if parent.is_on_floor():
+				return states.idle
+			elif parent.wall_direction == 0:
+				return states.fall
+			
 	return null
 	
 func _enter_state(new_state, old_state):
@@ -83,7 +105,11 @@ func _enter_state(new_state, old_state):
 		states.ledge_fall:
 			parent.coyote_timer.start()
 			parent.anim_player.play("Fall")
+		states.wall_slide:
+			parent.anim_player.play("Jump")
+			parent.body.scale.x = -parent.wall_direction
 			
 func _exit_state(old_state, new_state):
-	pass
-	
+	match old_state:
+		states.wall_slide:
+			parent.wall_slide_cooldown.start()
