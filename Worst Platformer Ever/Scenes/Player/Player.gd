@@ -8,7 +8,7 @@ const DROP_THRU_BIT = 1
 # horizontal movement
 var velocity = Vector2()
 var move_speed = 8 * Globals.UNIT_SIZE
-const WALL_JUMP_VELOCITY = Vector2(800, -500)
+const WALL_JUMP_VELOCITY = Vector2(2, -400)
 # 
 var is_grounded
 var move_direction
