@@ -237,6 +237,11 @@ cast_to = Vector2( 0, 5 )
 [node name="WallSlideCooldown" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="WallSlideSticky" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
 [connection signal="grounded_updated" from="." to="Camera2D" method="_on_Player_grounded_updated"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
 [connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
+[connection signal="timeout" from="WallSlideSticky" to="PlayerFSM" method="_on_WallSlideSticky_timeout"]

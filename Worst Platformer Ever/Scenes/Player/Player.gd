@@ -36,6 +36,7 @@ onready var body = $Body
 onready var left_wall_raycasts = $WallRaycasts/LeftWallRaycasts
 onready var right_wall_raycasts = $WallRaycasts/RightWallRaycasts
 onready var wall_slide_cooldown = $WallSlideCooldown
+onready var wall_slide_sticky_timer = $WallSlideSticky
 
 func _ready():
 	# kinematic equations for determining gravity and jump velocity automatically
@@ -95,6 +96,13 @@ func _handle_move_input(): # hold inputs
 	if move_direction != 0:
 		$Body.scale.x = move_direction
 	
+		
+func _handle_wall_slide_sticking():
+	if move_direction != 0 && move_direction != wall_direction:
+		if wall_slide_sticky_timer.is_stopped():
+			wall_slide_sticky_timer.start()
+	else:
+		wall_slide_sticky_timer.stop()
 		
 	# smoothness
 func _get_h_weight():

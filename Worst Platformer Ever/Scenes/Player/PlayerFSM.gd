@@ -38,6 +38,7 @@ func _state_logic(delta):
 	parent._apply_gravity(delta)
 	if state == states.wall_slide:
 		parent._cap_gravity_wall_slide()
+		parent._handle_wall_slide_sticking()
 	parent._apply_movement()
 	
 func _get_transition(delta):
@@ -113,3 +114,7 @@ func _exit_state(old_state, new_state):
 	match old_state:
 		states.wall_slide:
 			parent.wall_slide_cooldown.start()
+
+func _on_WallSlideSticky_timeout():
+	if state == states.wall_slide:
+		set_state(states.fall)
