@@ -8,7 +8,7 @@ const DROP_THRU_BIT = 1
 # horizontal movement
 var velocity = Vector2()
 var move_speed = 8 * Globals.UNIT_SIZE
-const WALL_JUMP_VELOCITY = Vector2(2, -400)
+const WALL_JUMP_VELOCITY = Vector2(2, -500)
 # 
 var is_grounded
 var move_direction
@@ -111,11 +111,11 @@ func _get_h_weight():
 		return 0.2
 	else:
 		if move_direction == 0:
-			return 1
+			return 0.1
 		elif move_direction == sign(velocity.x) && abs(velocity.x) > move_speed:
-			return 1 # the fall after leaving wall slide
+			return 15 # the fall after leaving wall slide
 		else:
-			return air_control #superpower if u make it 12
+			return 0.1 #superpower if u make it 12 # walljump air control 
 	
 # check if raycasts are colliding with ground (is character on ground)
 func _check_is_grounded(raycasts = self.raycasts):
