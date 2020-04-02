@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Tilemaps/DropThruTilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Tilemaps/JungleDirtTilemap.tres" type="TileSet" id=2]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Texture/Label.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 29.3519, 29.0057 )
@@ -27,6 +28,7 @@ tile_data = PoolIntArray( -1966062, 0, 0, -1966061, 0, 0, -1966060, 0, 0, -19660
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 535.981, 52.9482 )
+z_index = 1
 
 [node name="SceneChangeArea" type="Area2D" parent="."]
 position = Vector2( 2638.91, -242.696 )
@@ -40,4 +42,13 @@ shape = SubResource( 1 )
 [node name="icon" type="Sprite" parent="SceneChangeArea"]
 position = Vector2( 0.916504, 1.20006 )
 texture = ExtResource( 4 )
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 272.794, -90.4838 )
+
+[node name="TextureRect" type="TextureRect" parent="Node2D"]
+margin_right = 213.0
+margin_bottom = 213.0
+texture = ExtResource( 5 )
+stretch_mode = 5
 [connection signal="body_entered" from="SceneChangeArea" to="Player" method="_on_SceneChangeArea_body_entered"]
