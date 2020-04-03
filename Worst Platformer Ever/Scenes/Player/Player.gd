@@ -151,4 +151,4 @@ func _on_Area2D_body_exited(body):
 
 
 func _on_SceneChangeArea_body_entered(body):
-	SceneChanger.change_scene("res://Scenes/Levels/Level_1.tscn")
+	SceneChanger.change_scene("res://Scenes/Levels/Level1/Level_1.tscn")

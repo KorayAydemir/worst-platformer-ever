@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Player/Idle/Idle0.png" type="Texture" id=2]
@@ -103,9 +103,6 @@ extents = Vector2( 12, 14 )
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 12, 1 )
-
-[sub_resource type="CircleShape2D" id=8]
-radius = 39.0445
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 0
@@ -250,11 +247,6 @@ one_shot = true
 [node name="WallSlideSticky" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
-
-[node name="Area2D2" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-shape = SubResource( 8 )
 [connection signal="grounded_updated" from="." to="Camera2D" method="_on_Player_grounded_updated"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
 [connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
