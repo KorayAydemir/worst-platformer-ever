@@ -14,6 +14,7 @@ var is_grounded
 var move_direction
 var is_jumping
 var is_falling
+var spear_jump
 # jump
 var gravity
 var fall_gravity
@@ -157,8 +158,14 @@ func _on_SceneChangeArea_body_entered(body):
 
 
 func _on_Area2D2_body_entered(body):
-	Engine.time_scale = 0.3
+	Engine.time_scale = 0.4
 
 
 func _on_Area2D2_body_exited(body):
 	Engine.time_scale = 1
+
+func _on_SpearJump_body_entered(body):
+	spear_jump = true
+
+func _on_SpearJump_body_exited(body):
+	spear_jump = false

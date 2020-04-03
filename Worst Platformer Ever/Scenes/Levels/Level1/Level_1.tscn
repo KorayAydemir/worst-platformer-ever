@@ -58,7 +58,7 @@ texture = ExtResource( 6 )
 stretch_mode = 5
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 2.5
 autostart = true
 
 [node name="IceSpear" parent="." instance=ExtResource( 7 )]

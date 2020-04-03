@@ -10,11 +10,12 @@ func _ready():
 
 func _input(event):
 	# check if our current state is idle or run
-	if [states.idle, states.run].has(state) || !parent.coyote_timer.is_stopped():
+	if [states.idle, states.run].has(state) || !parent.coyote_timer.is_stopped() || parent.spear_jump:
 		# if jump is just pressed and char is grounded then jump
 		if event.is_action_pressed("jump"):
 				parent.velocity.y = parent.max_jump_velocity
 				parent.coyote_timer.stop()
+				parent.spear_jump = false
 		# drop through platform
 		if Input.is_action_pressed("down"):
 			if parent._check_is_grounded(parent.drop_thru_raycasts): #parent.drop_thru_raycasts on video

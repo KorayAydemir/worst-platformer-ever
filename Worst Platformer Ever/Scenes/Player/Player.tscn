@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Player/Idle/Idle0.png" type="Texture" id=2]
@@ -102,11 +102,14 @@ extents = Vector2( 12, 28 )
 extents = Vector2( 12, 14 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 12, 1 )
+extents = Vector2( 14, 1 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 24, 4 )
 
 [sub_resource type="CapsuleShape2D" id=8]
-radius = 58.0076
-height = 0.955757
+radius = 45.4786
+height = 4.63249
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 0
@@ -183,6 +186,14 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 7 )
+
+[node name="SpearJump" type="Area2D" parent="."]
+position = Vector2( 0, 34 )
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpearJump"]
+shape = SubResource( 9 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 160, -32 )
@@ -261,6 +272,8 @@ position = Vector2( 0, 5 )
 shape = SubResource( 8 )
 [connection signal="grounded_updated" from="." to="Camera2D" method="_on_Player_grounded_updated"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="SpearJump" to="." method="_on_SpearJump_body_entered"]
+[connection signal="body_exited" from="SpearJump" to="." method="_on_SpearJump_body_exited"]
 [connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
 [connection signal="timeout" from="WallSlideSticky" to="PlayerFSM" method="_on_WallSlideSticky_timeout"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_Area2D2_body_entered"]

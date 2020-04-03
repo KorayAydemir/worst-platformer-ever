@@ -27,7 +27,7 @@ func _apply_movement():
 	#yield(get_tree().create_timer(0.5), "timeout")
 	
 func _rotate_timer():
-	yield(get_tree().create_timer(1.5), "timeout")
+	yield(get_tree().create_timer(1), "timeout")
 	t = false
 	
 

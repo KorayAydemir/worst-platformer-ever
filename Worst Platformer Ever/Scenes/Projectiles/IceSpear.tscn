@@ -3,8 +3,9 @@
 [ext_resource path="res://Scenes/Projectiles/IceSpear.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Projectiles/IceSpear.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 80, 27.9439 )
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 24.3074
+height = 117.261
 
 [node name="IceSpear" type="KinematicBody2D"]
 collision_layer = 4
@@ -16,4 +17,6 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -11.2893, 0 )
+rotation = 1.5708
 shape = SubResource( 1 )
