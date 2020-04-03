@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var velocity = Vector2()
 var t = true
-var move_speed = 8 * Globals.UNIT_SIZE
+var move_speed = 15 * Globals.UNIT_SIZE
 
 onready var player = (get_node("/root/Level_1/Player"))
 
@@ -25,7 +25,6 @@ func _apply_movement():
 	velocity = Vector2(move_speed,0).rotated(rotation)
 	#move_speed = -1 * Globals.UNIT_SIZE
 	#yield(get_tree().create_timer(0.5), "timeout")
-	move_speed = 8 * Globals.UNIT_SIZE
 	
 func _rotate_timer():
 	yield(get_tree().create_timer(1.5), "timeout")

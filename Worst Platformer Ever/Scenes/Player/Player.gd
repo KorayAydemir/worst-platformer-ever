@@ -52,8 +52,6 @@ func _apply_gravity(delta): # jump
 		velocity.y += gravity * delta 
 	else: # fall gravity
 		velocity.y += fall_gravity * delta
-	if $WallRaycasts/LeftWallRaycasts/LeftWallRaycast.is_colliding():
-		print("ye")
 func wall_jump():
 	var wall_jump_velocity = WALL_JUMP_VELOCITY
 	wall_jump_velocity.x *= -wall_direction
