@@ -38,6 +38,8 @@ onready var right_wall_raycasts = $WallRaycasts/RightWallRaycasts
 onready var wall_slide_cooldown = $WallSlideCooldown
 onready var wall_slide_sticky_timer = $WallSlideSticky
 
+signal hit
+
 func _ready():
 	# kinematic equations for determining gravity and jump velocity automatically
 	gravity = 2 * max_jump_height / pow(jump_duration, 2)
@@ -152,3 +154,11 @@ func _on_Area2D_body_exited(body):
 
 func _on_SceneChangeArea_body_entered(body):
 	SceneChanger.change_scene("res://Scenes/Levels/Level1/Level_1.tscn")
+
+
+func _on_Area2D2_body_entered(body):
+	Engine.time_scale = 0.3
+
+
+func _on_Area2D2_body_exited(body):
+	Engine.time_scale = 1
