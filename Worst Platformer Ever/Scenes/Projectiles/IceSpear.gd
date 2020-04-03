@@ -14,7 +14,7 @@ func _physics_process(delta):
 	_rotate_timer()
 	if t == true:
 		self.look_at(player.position)
-		self.rotation_degrees = self.rotation_degrees - 20
+		self.rotation_degrees = self.rotation_degrees - 10
 	else:
 		_apply_movement() # move after rotation is completed
 		
