@@ -22,7 +22,7 @@ var max_jump_velocity
 var min_jump_velocity
 
 var max_jump_height = 3.75 * Globals.UNIT_SIZE #3.5 yapıcaksın
-var min_jump_height = 0.76 * Globals.UNIT_SIZE
+var min_jump_height = 0.8 * Globals.UNIT_SIZE
 var jump_duration = 0.4
 var fall_duration = 0.35
 var air_control = 1
@@ -38,8 +38,7 @@ onready var left_wall_raycasts = $WallRaycasts/LeftWallRaycasts
 onready var right_wall_raycasts = $WallRaycasts/RightWallRaycasts
 onready var wall_slide_cooldown = $WallSlideCooldown
 onready var wall_slide_sticky_timer = $WallSlideSticky
-
-signal hit
+var spear = preload("res://Scenes/Projectiles/IceSpear.tscn")
 
 func _ready():
 	# kinematic equations for determining gravity and jump velocity automatically
@@ -169,3 +168,11 @@ func _on_SpearJump_body_entered(body):
 
 func _on_SpearJump_body_exited(body):
 	spear_jump = false
+
+func _on_DeathArea_body_entered(body):
+	var ice_spear = spear.instance()
+	Engine.time_scale = 0
+	ice_spear.spear_speed = 9999
+func _on_DeathArea_body_exited(body):
+	Globals.spear_move_speed = 1
+	Engine.time_scale = 1

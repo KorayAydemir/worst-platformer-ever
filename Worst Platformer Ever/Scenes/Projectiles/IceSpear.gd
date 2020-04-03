@@ -2,7 +2,8 @@ extends KinematicBody2D
 
 var velocity = Vector2()
 var t = true
-var move_speed = 15 * Globals.UNIT_SIZE
+var spear_speed = 15
+var move_speed = spear_speed * Globals.UNIT_SIZE
 
 onready var player = (get_node("/root/Level_1/Player"))
 
