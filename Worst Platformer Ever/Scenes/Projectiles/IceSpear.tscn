@@ -4,8 +4,8 @@
 [ext_resource path="res://Sprites/Projectiles/IceSpear.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 24.3074
-height = 117.261
+radius = 22.2635
+height = 120.765
 
 [node name="IceSpear" type="KinematicBody2D"]
 collision_layer = 4

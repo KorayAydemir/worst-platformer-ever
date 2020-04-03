@@ -105,10 +105,10 @@ extents = Vector2( 12, 14 )
 extents = Vector2( 14, 1 )
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 24, 4 )
+extents = Vector2( 30, 8 )
 
 [sub_resource type="CapsuleShape2D" id=8]
-radius = 45.4786
+radius = 53.5229
 height = 4.63249
 
 [node name="Player" type="KinematicBody2D"]
@@ -129,16 +129,19 @@ anims/Jump = SubResource( 3 )
 anims/Run = SubResource( 4 )
 
 [node name="StandingShape" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 6 )
 shape = SubResource( 5 )
 
 [node name="CrouchingShape" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 20 )
 shape = SubResource( 6 )
 disabled = true
 
 [node name="Raycasts" type="Node2D" parent="."]
 editor/display_folded = true
+visible = false
 position = Vector2( 0, 35 )
 
 [node name="RayCast2D" type="RayCast2D" parent="Raycasts"]
@@ -160,6 +163,7 @@ collision_mask = 3
 
 [node name="DropThruRaycasts" type="Node2D" parent="."]
 editor/display_folded = true
+visible = false
 position = Vector2( 0, 35 )
 
 [node name="RayCast2D" type="RayCast2D" parent="DropThruRaycasts"]
@@ -180,6 +184,7 @@ cast_to = Vector2( 0, 16 )
 collision_mask = 2
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 position = Vector2( 0, 34 )
 collision_layer = 0
 collision_mask = 2
@@ -226,6 +231,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="WallRaycasts" type="Node2D" parent="."]
+visible = false
 
 [node name="LeftWallRaycasts" type="Node2D" parent="WallRaycasts"]
 
