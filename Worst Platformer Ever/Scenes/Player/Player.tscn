@@ -182,6 +182,7 @@ shape = SubResource( 7 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 160, -32 )
+offset = Vector2( 0, -100 )
 current = true
 limit_left = 0
 smoothing_enabled = true

@@ -11,3 +11,4 @@ func _process(delta):
 func _apply_movement():
 	velocity = move_and_slide(velocity, Vector2(0,1))
 	velocity.x = lerp(velocity.x, 2 * Globals.UNIT_SIZE, 0.2)
+	velocity.y = lerp(velocity.y, 2 * Globals.UNIT_SIZE, 0.2)

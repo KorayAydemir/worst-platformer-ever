@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Worst Platformer Ever"
-run/main_scene="res://Scenes/Levels/Level_1.tscn"
+run/main_scene="res://Scenes/Levels/Level1/Level_1.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -31,8 +31,8 @@ SceneChanger="*res://Scenes/Levels/SceneChanger.tscn"
 
 [display]
 
-window/size/width=640
-window/size/height=360
+window/size/width=1280
+window/size/height=720
 window/size/fullscreen=true
 window/size/test_width=1920
 window/size/test_height=1080
