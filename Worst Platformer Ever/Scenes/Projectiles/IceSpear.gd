@@ -12,7 +12,7 @@ func _ready():
 	pass
 	
 func _physics_process(delta):
-	_rotate_timer()
+	
 	if t == true:
 		self.look_at(player.position)
 		self.rotation_degrees = self.rotation_degrees - 10
@@ -24,12 +24,13 @@ func _physics_process(delta):
 func _apply_movement():
 	velocity = move_and_slide(velocity, Vector2(0,1))
 	velocity = Vector2(move_speed,0).rotated(rotation)
-	#move_speed = -1 * Globals.UNIT_SIZE
-	#yield(get_tree().create_timer(0.5), "timeout")
+	
 	
 func _rotate_timer():
-	yield(get_tree().create_timer(1), "timeout")
+	
 	t = false
 	
 
-
+func _on_Timer_timeout():
+	_rotate_timer()
+	print("rot")

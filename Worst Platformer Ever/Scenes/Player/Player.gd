@@ -59,7 +59,7 @@ func wall_jump():
 	velocity = wall_jump_velocity
 
 func _cap_gravity_wall_slide():
-	var max_velocity = 3 * Globals.UNIT_SIZE if !Input.is_action_pressed("down") else 7 * Globals.UNIT_SIZE
+	var max_velocity = 3 * Globals.UNIT_SIZE if !Input.is_action_pressed("down") else 10 * Globals.UNIT_SIZE
 	velocity.y = min(velocity.y, max_velocity)
 		
 func _apply_movement():
