@@ -21,8 +21,8 @@ var fall_gravity
 var max_jump_velocity
 var min_jump_velocity
 
-var max_jump_height = 3.75 * Globals.UNIT_SIZE #3.5 yapıcaksın
-var min_jump_height = 0.8 * Globals.UNIT_SIZE
+var max_jump_height = 4.25 * Globals.UNIT_SIZE 
+var min_jump_height = 1.25 * Globals.UNIT_SIZE
 var jump_duration = 0.4
 var fall_duration = 0.35
 var air_control = 1

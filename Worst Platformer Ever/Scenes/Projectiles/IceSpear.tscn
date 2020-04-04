@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Projectiles/IceSpear.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Projectiles/IceSpear.png" type="Texture" id=2]
@@ -9,6 +9,36 @@ extents = Vector2( 4, 72 )
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 22.2635
 height = 120.765
+
+[sub_resource type="Gradient" id=7]
+colors = PoolColorArray( 0.0775871, 0.866566, 0.902832, 1, 0.691406, 0.942139, 1, 1 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 7 )
+
+[sub_resource type="Curve" id=3]
+min_value = 0.5
+_data = [ Vector2( 0, 0.5011 ), 0.0, 0.0, 0, 0, Vector2( 1, 2 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+emission_shape = 2
+emission_box_extents = Vector3( 90, 1, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = -200.0
+angular_velocity_random = 1.0
+orbit_velocity = 1.0
+orbit_velocity_random = 0.0
+linear_accel = 100.0
+tangential_accel = 200.0
+tangential_accel_random = 0.4
+scale = 5.0
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 6 )
+anim_speed = 1.0
 
 [node name="IceSpear" type="KinematicBody2D"]
 collision_layer = 0
@@ -39,4 +69,9 @@ texture = ExtResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( 0, -20 )
+amount = 25
+process_material = SubResource( 5 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
