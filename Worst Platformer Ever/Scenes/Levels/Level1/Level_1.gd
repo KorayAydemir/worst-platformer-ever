@@ -2,7 +2,6 @@ extends Node2D
 
 const ICE_SPEAR = preload("res://Scenes//Projectiles//IceSpear.tscn")
 var rng_pos = RandomNumberGenerator.new()
-var spawn_timer
 
 func _ready():
 	pass

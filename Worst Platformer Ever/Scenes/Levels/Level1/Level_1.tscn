@@ -50,15 +50,15 @@ texture = ExtResource( 5 )
 position = Vector2( 272.794, -90.4838 )
 
 [node name="TextureRect" type="TextureRect" parent="Node2D"]
-margin_left = -2.85001
-margin_top = 20.9001
-margin_right = 210.15
-margin_bottom = 233.9
+margin_left = -446.881
+margin_top = -13.395
+margin_right = -233.881
+margin_bottom = 199.605
 texture = ExtResource( 6 )
 stretch_mode = 5
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.5
+wait_time = 2.0
 autostart = true
 
 [node name="IceSpear" parent="." instance=ExtResource( 7 )]

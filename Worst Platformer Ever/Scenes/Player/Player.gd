@@ -38,7 +38,6 @@ onready var left_wall_raycasts = $WallRaycasts/LeftWallRaycasts
 onready var right_wall_raycasts = $WallRaycasts/RightWallRaycasts
 onready var wall_slide_cooldown = $WallSlideCooldown
 onready var wall_slide_sticky_timer = $WallSlideSticky
-var spear = preload("res://Scenes/Projectiles/IceSpear.tscn")
 
 func _ready():
 	# kinematic equations for determining gravity and jump velocity automatically
@@ -156,23 +155,33 @@ func _on_SceneChangeArea_body_entered(body):
 	SceneChanger.change_scene("res://Scenes/Levels/Level1/Level_1.tscn")
 
 
-func _on_Area2D2_body_entered(body):
-	Engine.time_scale = 0.4
 
 
-func _on_Area2D2_body_exited(body):
+
+	
+
+func _on_DeathArea_area_entered(area):
+	Engine.time_scale = 0.0
+	
+	get_tree().change_scene("res://Scenes/Levels/Level1/Level_1.tscn")
+	print("death area")
+
+func _on_DeathArea_area_exited(area):
+	
 	Engine.time_scale = 1
 
-func _on_SpearJump_body_entered(body):
+func _on_SpearJump_area_entered(area):
 	spear_jump = true
+	print("spear jump area")
 
-func _on_SpearJump_body_exited(body):
+func _on_SpearJump_area_exited(area):
 	spear_jump = false
+	
+	
 
-func _on_DeathArea_body_entered(body):
-	var ice_spear = spear.instance()
-	Engine.time_scale = 0
-	ice_spear.spear_speed = 9999
-func _on_DeathArea_body_exited(body):
-	Globals.spear_move_speed = 1
+func _on_SlowMoArea_area_entered(area):
+	Engine.time_scale = 0.4
+	print("slowmo area")
+
+func _on_SlowMoArea_area_exited(area):
 	Engine.time_scale = 1
