@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+
+
+uniform vec2 resolution = vec2(512,256);
+
+uniform float count = 7.0;
+
+float Hash( vec2 p, in float s ){
+    return fract(sin(dot(vec3(p.xy,10.0 * abs(sin(s))),vec3(27.1,61.7, 12.4)))*273758.5453123);
+}
+
+float noise(in vec2 p, in float s)
+{
+    vec2 i = floor(p);
+    vec2 f = fract(p);
+    f *= f * (3.0-2.0*f);
+    return mix(mix(Hash(i + vec2(0.,0.), s), Hash(i + vec2(1.,0.), s),f.x),mix(Hash(i + vec2(0.,1.), s), Hash(i + vec2(1.,1.), s),f.x),f.y) * s;
+}
+
+float fbm(vec2 p)
+{
+     float v = 0.0;
+     v += noise(p*1., 0.35);
+     v += noise(p*2., 0.25);
+     v += noise(p*4., 0.125);
+     v += noise(p*8., 0.0625);
+     return v;
+}
+
+void fragment( ) 
+{
+
+	vec2 uv = ( FRAGCOORD.xy / resolution.xy ) * 2.0 - 1.0;
+	uv.x *= resolution.x/resolution.y;
+
+	vec3 finalColor = vec3( 0.0 );
+	
+		float t = abs(0.5 / ((uv.x + fbm( uv + TIME)) * (20.0)));
+		finalColor +=  t * vec3( 19.375 +0.1, 0.5, 9.0 );
+	
+	
+	COLOR = vec4( finalColor, 0.1  ); //1
+
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/resolution = Vector2( 512, 256 )
+shader_param/count = 7.0
+
+[sub_resource type="ImageTexture" id=3]
+flags = 39
+lossy_quality = 0.65
+flags = 39
+size = Vector2( 128, 256 )
+
+[node name="Node2D" type="TextureRect"]
+material = SubResource( 2 )
+margin_right = 111.0
+margin_bottom = 309.0
+texture = SubResource( 3 )
+expand = true

@@ -75,7 +75,7 @@ func _apply_movement():
 	# coyote jump
 	var was_on_floor = is_on_floor()
 		
-	velocity = move_and_slide(velocity, UP) # horizontal movement
+	velocity = move_and_slide(velocity, UP, 10) # horizontal movement
 	
 	is_grounded = !is_jumping  && get_collision_mask_bit(DROP_THRU_BIT) && _check_is_grounded()
 	
