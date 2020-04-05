@@ -8,7 +8,7 @@ const DROP_THRU_BIT = 1
 # horizontal movement
 var velocity = Vector2()
 var move_speed = 8 * Globals.UNIT_SIZE
-const WALL_JUMP_VELOCITY = Vector2(200, -500) # x= how far you jump from wall y = how high you climb (Jump) on wall
+const WALL_JUMP_VELOCITY = Vector2(300, -700) # x= how far you jump from wall y = how high you climb (Jump) on wall
 # 
 var is_grounded
 var move_direction
@@ -23,8 +23,8 @@ var min_jump_velocity
 
 var max_jump_height = 4.25 * Globals.UNIT_SIZE 
 var min_jump_height = 1.25 * Globals.UNIT_SIZE
-var jump_duration = 0.4
-var fall_duration = 0.35
+var jump_duration = 0.35
+var fall_duration = 0.4
 var air_control = 1
 var facing = 1 #not in use
 var wall_direction = 1
@@ -173,6 +173,7 @@ func _on_DeathArea_area_exited(area):
 func _on_SpearJump_area_entered(area):
 	spear_jump = true
 	print("spear jump area")
+	#move_speed *= 2
 
 func _on_SpearJump_area_exited(area):
 	spear_jump = false
