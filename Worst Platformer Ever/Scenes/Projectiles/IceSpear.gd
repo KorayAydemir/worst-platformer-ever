@@ -7,16 +7,20 @@ var move_speed = spear_speed * Globals.UNIT_SIZE
 
 onready var player = (get_node("/root/Level_1/Player"))
 onready var particles = (get_node("Particles2D"))
+onready var level1 = (get_node("/root/Level_1"))
 
 func _ready():
 	pass
-	
 func _physics_process(delta):
 	
 	if t == true:
 		self.look_at(player.position)
 		particles.look_at(player.position)
-		self.rotation_degrees = self.rotation_degrees - 0 # -10
+		if player.area == "climb":
+			if level1.spear_direction == "front": # spears coming form front - up and down
+				self.rotation_degrees = self.rotation_degrees + 20 # make rot + 20
+			else: # spears coming from behind - up and down rot -20
+				self.rotation_degrees = self.rotation_degrees + -20 # make rot -20
 	else:
 		_apply_movement() # move after rotation is completed
 		
