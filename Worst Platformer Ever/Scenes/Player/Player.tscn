@@ -104,10 +104,10 @@ extents = Vector2( 12, 14 )
 extents = Vector2( 14, 1 )
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 34, 10 )
+extents = Vector2( 34, 12 )
 
 [sub_resource type="CapsuleShape2D" id=10]
-radius = 56.6696
+radius = 57.3009
 height = 4.80552
 
 [node name="Player" type="KinematicBody2D"]
@@ -202,7 +202,7 @@ collision_layer = 256
 collision_mask = 131072
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpearJump"]
-position = Vector2( 0, 3 )
+position = Vector2( 0, 5 )
 shape = SubResource( 9 )
 
 [node name="Camera2D" type="Camera2D" parent="."]

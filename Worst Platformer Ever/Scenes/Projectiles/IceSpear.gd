@@ -16,7 +16,7 @@ func _physics_process(delta):
 	if t == true:
 		self.look_at(player.position)
 		particles.look_at(player.position)
-		self.rotation_degrees = self.rotation_degrees - 8
+		self.rotation_degrees = self.rotation_degrees - 0 # -10
 	else:
 		_apply_movement() # move after rotation is completed
 		
@@ -34,4 +34,4 @@ func _rotate_timer():
 
 func _on_Timer_timeout():
 	_rotate_timer()
-	print("rot")
+	

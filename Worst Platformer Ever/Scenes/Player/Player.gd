@@ -29,6 +29,8 @@ var air_control = 1
 var facing = 1 #not in use
 var wall_direction = 1
 
+var area
+
 onready var drop_thru_raycasts = $DropThruRaycasts
 onready var raycasts = $Raycasts
 onready var anim_player = $Body/Sprite/AnimationPlayer
@@ -181,8 +183,11 @@ func _on_SpearJump_area_exited(area):
 	
 
 func _on_SlowMoArea_area_entered(area):
-	Engine.time_scale = 0.4
+	Engine.time_scale = 0.2
 	print("slowmo area")
 
 func _on_SlowMoArea_area_exited(area):
 	Engine.time_scale = 1
+
+func _on_ClimbArea_body_entered(body):
+	area = "climb"

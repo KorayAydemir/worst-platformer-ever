@@ -53,16 +53,16 @@ func _get_transition(delta):
 					return states.ledge_fall # switch to fall state
 			if parent.move_direction != 0: # if we are moving horizontally
 				return states.run # switch to run state
-		
-		states.run: # in idle satate
+#Input.is_action_pressed("move_left") || Input.is_action_pressed("move_right")
+		states.run: # in run satate
 			if !parent.is_on_floor(): # if not on the ground
 				if parent.is_jumping:  # if moving upwards
 					return states.jump # switch to jump state
 				elif parent.is_falling: # if moving downwards
 					return states.ledge_fall # switch to fall state
-			if parent.move_direction == 0: # if we are not moving horizontally
+			if parent.move_direction == 0: # if we are not moving horizontally parent.move_direction == 0
 				return states.idle # switch to idle state
-				
+#Input.is_action_just_released("move_left") || Input.is_action_just_released("move_right")
 		states.jump:
 			if parent.wall_direction != 0 && parent.wall_slide_cooldown.is_stopped():
 				return states.wall_slide
