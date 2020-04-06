@@ -87,7 +87,7 @@ position = Vector2( 674.796, -170.064 )
 scale = Vector2( 5.45199, 5.45199 )
 frames = SubResource( 2 )
 animation = "Climb"
-frame = 1
+frame = 5
 playing = true
 __meta__ = {
 "_edit_lock_": true

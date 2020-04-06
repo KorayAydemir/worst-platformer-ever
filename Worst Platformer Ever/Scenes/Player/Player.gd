@@ -157,9 +157,6 @@ func _on_SceneChangeArea_body_entered(body):
 	SceneChanger.change_scene("res://Scenes/Levels/Level1/Level_1.tscn")
 
 
-
-
-
 	
 
 func _on_DeathArea_area_entered(area):
@@ -184,7 +181,6 @@ func _on_SpearJump_area_exited(area):
 
 func _on_SlowMoArea_area_entered(area):
 	Engine.time_scale = 0.2
-	print("slowmo area")
 
 func _on_SlowMoArea_area_exited(area):
 	Engine.time_scale = 1
