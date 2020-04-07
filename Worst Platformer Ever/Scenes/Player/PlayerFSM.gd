@@ -22,11 +22,16 @@ func _input(event):
 				parent.set_collision_mask_bit(parent.DROP_THRU_BIT, false) # stop colliding with drop_thru layer
 	
 	elif state ==  states.wall_slide:
+		if previous_state == 2: # if prev_state was jump
+			parent.air_control = 0.1
 		if event.is_action_pressed("jump"):
 			parent.wall_jump()
 			set_state(states.jump)
 	# check if our current state is jump
 	if state == states.jump:
+		if !previous_state == 5:
+			parent.air_control = 0.2 # to dodge spears better
+		
 		# if jump key is released, fall
 		if event.is_action_released("jump") && parent.velocity.y < parent.min_jump_velocity:
 			parent.velocity.y = parent.min_jump_velocity
@@ -41,7 +46,6 @@ func _state_logic(delta):
 		parent._cap_gravity_wall_slide()
 		parent._handle_wall_slide_sticking()
 	parent._apply_movement()
-	
 func _get_transition(delta):
 #	print(state)
 	match state:

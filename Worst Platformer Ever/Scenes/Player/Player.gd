@@ -118,7 +118,7 @@ func _get_h_weight():
 		elif move_direction == sign(velocity.x) && abs(velocity.x) > move_speed:
 			return 15 # the fall after leaving wall slide
 		else:
-			return 0.1 #superpower if u make it 12 # walljump air control 
+			return air_control #superpower if u make it 12 # walljump air control 
 	
 # check if raycasts are colliding with ground (is character on ground)
 func _check_is_grounded(raycasts = self.raycasts):
@@ -163,7 +163,7 @@ func _on_DeathArea_area_entered(area):
 	Engine.time_scale = 0.0
 	
 	get_tree().change_scene("res://Scenes/Levels/Level1/Level_1.tscn")
-	print("death area")
+
 
 func _on_DeathArea_area_exited(area):
 	
@@ -171,7 +171,7 @@ func _on_DeathArea_area_exited(area):
 
 func _on_SpearJump_area_entered(area):
 	spear_jump = true
-	print("spear jump area")
+
 	#move_speed *= 2
 
 func _on_SpearJump_area_exited(area):
@@ -187,3 +187,10 @@ func _on_SlowMoArea_area_exited(area):
 
 func _on_ClimbArea_body_entered(body):
 	area = "climb"
+	
+
+func _on_SlideDownArea_body_entered(body):
+	area = "slide"
+
+func _on_RunArea_body_entered(body):
+	area = "run"

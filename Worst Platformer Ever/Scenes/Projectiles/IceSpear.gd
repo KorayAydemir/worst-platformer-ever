@@ -16,12 +16,25 @@ func _physics_process(delta):
 	if t == true:
 		self.look_at(player.position)
 		particles.look_at(player.position)
-		if player.area == "climb":
+		if player.area == "climb": #while climbin
 			if level1.spear_direction == "front": # spears coming form front - up and down
-				self.rotation_degrees = self.rotation_degrees + 20 # make rot + 20
+				self.rotation_degrees = self.rotation_degrees + 22 # make rot + 20
 			else: # spears coming from behind - up and down rot -20
-				self.rotation_degrees = self.rotation_degrees + -20 # make rot -20
-	else:
+				self.rotation_degrees = self.rotation_degrees + -22 # make rot -20
+				# print("climb")
+		elif player.area == "slide": # while slidin
+			if level1.spear_direction == "front": # spears coming from front - down
+				self.rotation_degrees = self.rotation_degrees + -20
+			else: #spears coming from behind - down
+				self.rotation_degrees = self.rotation_degrees + 20
+				# print("slide")
+		elif player.area == "run": # while runnin-jumpin straight:
+			if level1.spear_direction == "front": # spears coming form front - up and down
+				self.rotation_degrees = self.rotation_degrees + -20 # make rot + 20
+			else: # spears coming from behind - up and down rot -20
+				self.rotation_degrees = self.rotation_degrees + -15 # make rot -20
+		
+	else: # - 17  else + 17 rot for sliding down
 		_apply_movement() # move after rotation is completed
 		
 
