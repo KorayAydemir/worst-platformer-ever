@@ -41,6 +41,7 @@ onready var right_wall_raycasts = $WallRaycasts/RightWallRaycasts
 onready var wall_slide_cooldown = $WallSlideCooldown
 onready var wall_slide_sticky_timer = $WallSlideSticky
 
+var p 
 func _ready():
 	# kinematic equations for determining gravity and jump velocity automatically
 	gravity = 2 * max_jump_height / pow(jump_duration, 2)
@@ -162,8 +163,8 @@ func _on_SceneChangeArea_body_entered(body):
 func _on_DeathArea_area_entered(area):
 	Engine.time_scale = 0.0
 	
-	get_tree().change_scene("res://Scenes/Levels/Level1/Level_1.tscn")
-
+	get_tree().change_scene("res://Scenes/Levels/Level2/Level_2.tscn")
+	var p = true
 
 func _on_DeathArea_area_exited(area):
 	

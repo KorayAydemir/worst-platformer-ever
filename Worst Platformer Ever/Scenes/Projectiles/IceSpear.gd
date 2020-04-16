@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+
 var velocity = Vector2()
 var t = true
 var spear_speed = 15
@@ -8,11 +9,10 @@ var move_speed = spear_speed * Globals.UNIT_SIZE
 onready var player = (get_node("/root/Level_1/Player"))
 onready var particles = (get_node("Particles2D"))
 onready var level1 = (get_node("/root/Level_1"))
-
 func _ready():
 	pass
-func _physics_process(delta):
 	
+func _physics_process(delta):
 	if t == true:
 		self.look_at(player.position)
 		particles.look_at(player.position)
